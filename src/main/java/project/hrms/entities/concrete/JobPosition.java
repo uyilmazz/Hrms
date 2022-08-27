@@ -7,8 +7,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
 @Table(name="job_titles")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class JobPosition {
 	
 	@Id
@@ -18,30 +25,4 @@ public class JobPosition {
 	
 	@Column(name="title")
 	private String title;
-	
-	public JobPosition() {}
-
-	public JobPosition(int id, String title) {
-		this.id = id;
-		this.title = title;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	
-	
-	
 }

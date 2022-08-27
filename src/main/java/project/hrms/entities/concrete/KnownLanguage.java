@@ -1,37 +1,43 @@
 package project.hrms.entities.concrete;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Table(name="cities")
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobAdvertisements"})
-@Data
+@Table(name="known_languages")
 @AllArgsConstructor
 @NoArgsConstructor
-public class City {
+@Data
+public class KnownLanguage {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
-	private int cityId;
-
-	@Column(name="name")
-	private String cityName;
+	private int id;
 	
-	@OneToMany(mappedBy="city")
-	private List<JobAdvertisement> jobAdvertisements;
-
+	@Column(name="name")
+	private String name;
+	
+	@NotNull
+	@Min(1)
+	@Max(5)
+	@Column(name="level")
+	private int level;
+	
+	@ManyToOne
+	@JoinColumn(name="cv_id")
+	private CurriculumVitae curriculumVitae;
 }

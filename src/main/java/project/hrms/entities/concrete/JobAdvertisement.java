@@ -1,7 +1,5 @@
 package project.hrms.entities.concrete;
 
-
-
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -16,8 +14,15 @@ import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
 @Table(name="job_advertisements")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class JobAdvertisement {
 	
 	@Id
@@ -59,111 +64,5 @@ public class JobAdvertisement {
 	
 	@Column(name="deadline")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date deadline;
-
-	public JobAdvertisement() {
-	}
-
-	public JobAdvertisement(int id, String description, double minSalary, double maxSalary, int openNumberOfPositions,
-			Date createdDate, Date deadline,boolean isActive) {
-		super();
-		this.id = id;
-		this.description = description;
-		this.minSalary = minSalary;
-		this.maxSalary = maxSalary;
-		this.openNumberOfPositions = openNumberOfPositions;
-		this.createdDate = createdDate;
-		this.deadline = deadline;
-		this.isActive = isActive;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public JobTitle getJobTitle() {
-		return jobTitle;
-	}
-
-	public void setJobTitle(JobTitle jobTitle) {
-		this.jobTitle = jobTitle;
-	}
-
-	public City getCity() {
-		return city;
-	}
-
-	public void setCity(City city) {
-		this.city = city;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public double getMinSalary() {
-		return minSalary;
-	}
-
-	public void setMinSalary(double minSalary) {
-		this.minSalary = minSalary;
-	}
-
-	public double getMaxSalary() {
-		return maxSalary;
-	}
-
-	public void setMaxSalary(double maxSalary) {
-		this.maxSalary = maxSalary;
-	}
-
-	public int getOpenNumberOfPositions() {
-		return openNumberOfPositions;
-	}
-
-	public void setOpenNumberOfPositions(int openNumberOfPositions) {
-		this.openNumberOfPositions = openNumberOfPositions;
-	}
-
-	public Date getCreatedDate() {
-		return createdDate;
-	}
-
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
-	}
-
-	public Date getDeadline() {
-		return deadline;
-	}
-
-	public void setDeadline(Date deadline) {
-		this.deadline = deadline;
-	}
-
-	public Employer getEmployer() {
-		return employer;
-	}
-
-	public void setEmployer(Employer employer) {
-		this.employer = employer;
-	}
-
-	public boolean isActive() {
-		return isActive;
-	}
-
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
-	}
-	
-	
+	private Date deadline;	
 }
