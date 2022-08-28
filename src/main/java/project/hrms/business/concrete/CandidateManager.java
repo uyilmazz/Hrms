@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import project.hrms.business.abstracts.CandidateService;
 import project.hrms.core.utilities.results.DataResult;
+import project.hrms.core.utilities.results.ErrorDataResult;
 import project.hrms.core.utilities.results.ErrorResult;
 import project.hrms.core.utilities.results.Result;
 import project.hrms.core.utilities.results.SuccessDataResult;
@@ -79,6 +80,15 @@ public class CandidateManager implements CandidateService{
 			return new ErrorResult("Candidate is already exists!");	
 		
 		return new SuccessResult();
+	}
+
+	@Override
+	public DataResult<Candidate> getById(int candidateId) {
+		Candidate candidate = this.candidateDao.getById(candidateId);
+		if(candidate == null) {
+			return new ErrorDataResult<Candidate>("Candidate not found!");
+		}
+		return new SuccessDataResult<Candidate>(candidate);
 	}
 
 	

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,6 +21,7 @@ import project.hrms.business.abstracts.CurriculumVitaeService;
 import project.hrms.core.utilities.results.DataResult;
 import project.hrms.core.utilities.results.ErrorDataResult;
 import project.hrms.core.utilities.results.Result;
+import project.hrms.dto.concrete.CreateCurriculumVitaeDto;
 import project.hrms.entities.concrete.CurriculumVitae;
 
 @RestController
@@ -37,6 +39,16 @@ public class CurriculumVitaesController {
 	public DataResult<List<CurriculumVitae>> getAll(){
 		return this.curriculumVitaeService.getAll();
 	}
+	
+	@GetMapping("/getByCandidateId")
+	public DataResult<List<CurriculumVitae>> getByCandidateId(@RequestParam int candidateId){
+		return this.curriculumVitaeService.getByCandidateId(candidateId);
+	}
+	
+//	@PostMapping("/addDto")
+//	public Result addDto(@RequestBody CreateCurriculumVitaeDto createCurriculumVitaeDto) {
+//		return this.curriculumVitaeService.addDto(createCurriculumVitaeDto);
+//	}
 	
 	@PostMapping("/add")
 	public Result add(@RequestBody CurriculumVitae curriculumVitae) {

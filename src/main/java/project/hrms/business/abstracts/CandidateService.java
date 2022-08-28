@@ -12,4 +12,5 @@ public interface CandidateService {
 
 	DataResult<List<Candidate>> getAll();
 	Result add(CreateCandidateDto createCandidateDto);
+	DataResult<Candidate> getById(int candidateId);
 }
